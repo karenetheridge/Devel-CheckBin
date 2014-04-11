@@ -28,21 +28,21 @@ sub can_run {
 }
 
 sub check_bin {
-    my ( $bin, $version) = @_;
+    my ( $command, $version) = @_;
     if ( $version ) {
         die "check_bin does not support versions yet";
     }
 
-    # Locate the bin
-    print "Locating bin:$bin...";
-    my $found_bin = can_run( $bin );
-    if ( $found_bin ) {
-        print " found at $found_bin.\n";
+    # Locate the command in $PATH
+    print "Locating command: $command...";
+    my $found_command = can_run( $command );
+    if ( $found_command ) {
+        print " found at $found_command.\n";
         return 1;
     } else {
         print " missing.\n";
         print "Unresolvable missing external dependency.\n";
-        print "Please install '$bin' seperately and try again.\n";
+        print "Please install '$command' seperately and try again.\n";
         print STDERR "NA: Unable to build distribution on this platform.\n";
         exit(0);
     }

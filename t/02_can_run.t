@@ -14,7 +14,7 @@ subtest 'ok' => sub {
         open *STDOUT, '>', \$out;
         check_bin('ls');
     }
-    like $out, qr{Locating bin:ls\.\.\. found at \S+};
+    like $out, qr{Locating command: ls\.\.\. found at \S+};
     pass "OK";
 };
 
