@@ -64,11 +64,11 @@ Devel::CheckBin - check that a command is available
 
 =head1 DESCRIPTION
 
-Devel::CheckBin is a perl module that checks whether a particular command is available.
+Devel::CheckBin is a perl module that checks whether a particular command is available in C<$PATH>.
 
 =head1 USING IT IN Makefile.PL or Build.PL
 
-If you want to use this from Makefile.PL or Build.PL, do not simply copy the module into your distribution as this may cause problems when PAUSE and search.cpan.org index the distro. Instead, use the 'configure_requires'.
+If you want to use this from F<Makefile.PL> or F<Build.PL>, do not simply copy the module into your distribution as this may cause problems when PAUSE indexes the distro. Instead, use C<configure_requires>.
 
 
 =head1 LICENSE
