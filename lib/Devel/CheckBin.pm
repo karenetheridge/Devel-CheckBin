@@ -18,10 +18,18 @@ sub can_run {
     my $_cmd = $cmd;
     return $_cmd if (-x $_cmd or $_cmd = MM->maybe_command($_cmd));
 
+     my @ext = (
+         '',
+         $^O eq 'MSWin32' ? ( split /\Q$Config::Config{path_sep}\E/, $ENV{PATHEXT} ) : ()
+    );
+
     for my $dir ((split /$Config::Config{path_sep}/, $ENV{PATH}), '.') {
         next if $dir eq '';
-        my $abs = File::Spec->catfile($dir, $cmd);
-        return $abs if (-x $abs or $abs = MM->maybe_command($abs));
+        for my $ext (@ext)
+        {
+            my $abs = File::Spec->catfile($dir, $cmd . $ext);
+            return $abs if (-x $abs or $abs = MM->maybe_command($abs));
+        }
     }
 
     return;
