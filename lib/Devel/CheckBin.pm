@@ -60,6 +60,7 @@ Devel::CheckBin - check that a command is available
 =head1 SYNOPSIS
 
     use Devel::CheckBin;
+    check_bin('some_program');
 
 =head1 DESCRIPTION
 
